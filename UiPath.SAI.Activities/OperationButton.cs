@@ -15,17 +15,13 @@ namespace UiPath.SAI.Activities
     [Designer(typeof(OperationDesigner))]
     public class OperationButton : CalcAsyncActivity
     {   
-        public InArgument<string> inArgument { get; set; }
-
         [Category("Operation")]
-        public InArgument<OperatorType> Operator { get; set; } = OperatorType.Add;
+        public InArgument<OperatorType> Operator { get; set; }
 
         protected override async Task<Action<AsyncCodeActivityContext>> ExecuteAsync(AsyncCodeActivityContext context, CancellationToken cancellationToken)
         {
             PropertyDescriptor calcSessionProperty = context.DataContext.GetProperties()[Calculator.CalcSessionPropertyName];
             IUICalculator uICalculator = calcSessionProperty?.GetValue(context.DataContext) as IUICalculator;
-
-            
 
             if (uICalculator == null)
             {

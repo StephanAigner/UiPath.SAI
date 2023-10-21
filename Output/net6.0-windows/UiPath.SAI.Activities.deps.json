@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "UiPath.SAI.Activities/3.0.289-dev.717": {
+      "UiPath.SAI.Activities/3.0.294-dev.1060": {
         "dependencies": {
           "System.Activities.Core.Presentation": "6.0.0-20220318.2",
           "System.Activities.Metadata": "6.0.0-20220318.2",
@@ -668,7 +668,7 @@
     }
   },
   "libraries": {
-    "UiPath.SAI.Activities/3.0.289-dev.717": {
+    "UiPath.SAI.Activities/3.0.294-dev.1060": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

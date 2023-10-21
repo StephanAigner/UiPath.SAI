@@ -20,22 +20,20 @@ namespace UiPath.SAI.Activities.Design
     // Interaction logic for OperationDesigner.xaml
     public partial class OperationDesigner
     {
+        ObservableCollection<OperatorType> _operators = new ObservableCollection<OperatorType>(Enum.GetValues(typeof(OperatorType)).Cast<OperatorType>());
 
-        ObservableCollection<string> _items = new ObservableCollection<string> { "a1", "a2" };
-
-
-        public ObservableCollection<string> Items
+        public ObservableCollection<OperatorType> Operators
 
         {
 
-            get { return _items; }
+            get { return _operators; }
 
-            set { _items = value; }
+            set { _operators = value; }
 
         }
 
 
-        public IEnumerable<OperatorType> Operators { get; set; }= Enum.GetValues(typeof(OperatorType)).Cast<OperatorType>();
+
 
         public OperationDesigner()
         {

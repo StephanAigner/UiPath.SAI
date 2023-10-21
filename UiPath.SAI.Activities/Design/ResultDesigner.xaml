@@ -1,19 +1,13 @@
-﻿<sap:ActivityDesigner x:Class="UiPath.SAI.Activities.Design.DigitDesigner"
+﻿<sap:ActivityDesigner x:Class="UiPath.SAI.Activities.Design.ResultDesigner"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:s="clr-namespace:System;assembly=mscorlib"
-    xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
     xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
-    xmlns:uip="clr-namespace:UiPath.Activities.Presentation"
-    xmlns:sai="clr-namespace:UiPath.SAI.Activities"
     xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
     xmlns:sapc="clr-namespace:System.Activities.Presentation.Converters;assembly=System.Activities.Presentation"
-    Collapsible="True">
-
+    xmlns:uip="clr-namespace:UiPath.Activities.Presentation" Collapsible="True">
     <sap:ActivityDesigner.Resources>
         <ResourceDictionary>
             <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter" />
-            <sai:ComboBoxDigitConverter x:Key="ComboBoxDigitConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Themes\Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -21,9 +15,6 @@
     </sap:ActivityDesigner.Resources>
     <uip:ActivityDecoratorControl Style="{StaticResource ActivityDecoratorStyle}">
         <StackPanel Orientation="Vertical" Width="300" Margin="0 0 0 5">
-            <Label Padding="0" HorizontalAlignment="Left" VerticalAlignment="Center"
-       Margin="0, 5, 0, 0" Content="Operator:" />
-            <ComboBox  ItemsSource= "{Binding Digits }" SelectedValue="{Binding Path=ModelItem.Digit,Converter={StaticResource ComboBoxDigitConverter}, Mode=TwoWay }"  />
         </StackPanel>
     </uip:ActivityDecoratorControl>
 </sap:ActivityDesigner>

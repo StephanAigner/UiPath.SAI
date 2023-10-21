@@ -11,7 +11,7 @@
     <sap:ActivityDesigner.Resources>
         <ResourceDictionary>
             <sapc:ArgumentToExpressionConverter x:Key="ArgumentToExpressionConverter" />
-            <sai:ComboBoxItemConverter x:Key="ComboBoxItemConverter"/>
+            <sai:ComboBoxOperatorConverter x:Key="ComboBoxOperatorConverter"/>
             <sai:ArgumentConverter x:Key="ArgumentConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Themes\Generic.xaml" />
@@ -20,7 +20,9 @@
     </sap:ActivityDesigner.Resources>
     <uip:ActivityDecoratorControl Style="{StaticResource ActivityDecoratorStyle}">
         <StackPanel Orientation="Vertical" Width="300" Margin="0 0 0 5">
-            <ComboBox ItemsSource= "{Binding Operators }" SelectedItem="" SelectedValue="{Binding Path=ModelItem.Operator,Converter={StaticResource ComboBoxItemConverter}, Mode=TwoWay }"  />
+            <Label Padding="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Margin="0, 5, 0, 0" Content="Operator:" />
+            <ComboBox  ItemsSource= "{Binding Operators }" SelectedValue="{Binding Path=ModelItem.Operator,Converter={StaticResource ComboBoxOperatorConverter}, Mode=TwoWay }"  />
         </StackPanel>
     </uip:ActivityDecoratorControl>
 </sap:ActivityDesigner>

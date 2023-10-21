@@ -5,22 +5,35 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
+using UiPath.SAI.Activities.Helper;
 
 namespace UiPath.SAI.Activities.Calc
 {
     public class Win10Calculator : Automated, IUICalculator
     {
         private AutomationElement _result;
-
+        private string RESULT_VAL = "Display is ";
         public Win10Calculator()
         {
 
         }
 
 
-        public double Display => throw new NotImplementedException();
+        public string GetResult()
+        {
+            string result = _result.GetCurrentPropertyValue(
+                AutomationElement.NameProperty).ToString();
+            result = result.posttleft(RESULT_VAL);
+            return result;
+        }
 
-        public bool ResultAvailable => throw new NotImplementedException();
+        public double Display =>
+            double.TryParse(GetResult(), out double result) ?
+                result :
+                double.NaN;
+
+        public bool ResultAvailable =>
+            double.TryParse(GetResult(), out double result);
 
         public void Add()
         {

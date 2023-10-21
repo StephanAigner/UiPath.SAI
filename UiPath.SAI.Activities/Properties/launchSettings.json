@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UiPath.SAI.Activities": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

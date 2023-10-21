@@ -65,7 +65,14 @@ namespace UiPath.SAI.Activities
 
         private void OnFaulted(NativeActivityFaultContext faultContext, Exception propagatedException, ActivityInstance propagatedFrom)
         {
-            throw new NotImplementedException();
+            if (uICalculator != null)
+            {
+                uICalculator.Disconnect();
+            }
+            else
+            {
+                DebugLog.Set(faultContext, "(uICalculator != null)");
+            }
         }
 
         private void OnCompleted(NativeActivityContext context, ActivityInstance completedInstance)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Activities;
-using System.Activities.Statements;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,11 +12,10 @@ using UiPath.SAI.Activities.Helper;
 
 namespace UiPath.SAI.Activities
 {
-    [Designer(typeof(DigitDesigner))]
-    public partial class DigitButton : CalcAsyncActivity
+    [Designer(typeof(ResultDesigner))]
+    public class Result : CalcAsyncActivity
     {
-        public InArgument<DigitType> Digit { get; set; } 
-
+        public OutArgument<string> Value { get; set; }
         protected override async Task<Action<AsyncCodeActivityContext>> ExecuteAsync(AsyncCodeActivityContext context, CancellationToken cancellationToken)
         {
             PropertyDescriptor calcSessionProperty = context.DataContext.GetProperties()[Calculator.CalcSessionPropertyName];
@@ -28,11 +26,16 @@ namespace UiPath.SAI.Activities
                 throw new InvalidOperationException("Calculator not connected!");
             }
 
-            DigitType digit = Digit.Get(context);
-            uICalculator.Digit(digit);
+            //if (!uICalculator.ResultAvailable)
+            //{
+            //    throw new InvalidOperationException("Result not available!");
+            //}
+            var result = uICalculator.Display;
+
 
             return (asyncCodeActivityContext) =>
             {
+                Value.Set(asyncCodeActivityContext, result.ToString());
             };
         }
     }
